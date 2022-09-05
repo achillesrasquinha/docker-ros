@@ -34,9 +34,11 @@ RUN set -e \
         x11vnc \
         ros-${ROS_DISTRO}-desktop-full \
         python3 \
+        python3-pip \
         python3-numpy \
         supervisor \
         dbus-x11 \
+        ros-${ROS_DISTRO}-turtlesim \
     && git clone https://github.com/novnc/noVNC.git --depth 1 ${NOVNC_DIR} \
     && ln -s ${NOVNC_DIR}/vnc_lite.html ${NOVNC_DIR}/index.html \
     && git clone https://github.com/novnc/websockify.git --depth 1 ${NOVNC_DIR}/websockify \
