@@ -40,4 +40,5 @@ RUN set -e \
     && ln -s ${NOVNC_DIR}/vnc_lite.html ${NOVNC_DIR}/index.html \
     && git clone https://github.com/novnc/websockify.git --depth 1 ${NOVNC_DIR}/websockify \
     && cd ${NOVNC_DIR}/websockify \
-    && python3 setup.py install
+    && python3 setup.py install \
+    && echo "$USER ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers

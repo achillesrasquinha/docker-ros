@@ -17,6 +17,8 @@ USER ${USER}
 
 RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> ${HOME}/.bashrc
 
+VOLUME [ "${ROS_WORKSPACE}" ]
+
 EXPOSE ${NOVNC_PORT}
 
 CMD [ "/start" ]
