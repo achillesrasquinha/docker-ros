@@ -13,11 +13,11 @@ RUN chmod +x /start
 
 USER ${USER}
 
+VOLUME [ "${ROS_WORKSPACE}" ]
+
 RUN mkdir -p ${ROS_WORKSPACE}/src
 
 RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> ${HOME}/.bashrc
-
-VOLUME [ "${ROS_WORKSPACE}" ]
 
 EXPOSE ${NOVNC_PORT}
 

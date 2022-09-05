@@ -6,5 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile
     image: ghcr.io/achillesrasquinha/ros
+    ports:
+      - "3000:5000"
     volumes:
       - ./workspace:/home/ros/ros_ws

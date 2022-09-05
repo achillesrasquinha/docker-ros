@@ -27,6 +27,7 @@ RUN set -e \
         git \
         gcc \
         g++ \
+        libncurses5-dev \
         xfce4 \
         xvfb \
         xterm \
