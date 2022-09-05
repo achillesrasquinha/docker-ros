@@ -62,10 +62,6 @@ docker-pull: ## Pull Latest Docker Images
 docker-build: clean docker-pull requirements ## Build the Docker Image.
 	$(call log,INFO,Building Docker Image)
 
-	if [[ -f "${BASEDIR}/docker-compose.yml" ]]; then \
-		$(DOCKER_COMPOSE) build; \
-	fi
-	
 	if [[ -d "${BASEDIR}/docker/files" ]]; then \
 		for folder in `ls ${BASEDIR}/docker/files`; do \
 			docker build ${BASEDIR}/docker/files/$$folder --tag $(DOCKER_IMAGE):$$folder $(DOCKER_BUILD_ARGS) ; \
@@ -73,6 +69,10 @@ docker-build: clean docker-pull requirements ## Build the Docker Image.
 	fi
 
 	@[[ -f "${BASEDIR}/Dockerfile" ]] && docker build $(BASEDIR) --tag $(DOCKER_IMAGE) $(DOCKER_BUILD_ARGS)
+	
+	if [[ -f "${BASEDIR}/docker-compose.yml" ]]; then \
+		$(DOCKER_COMPOSE) build; \
+	fi
 
 docker-push: ## Push Docker Image to Registry.
 	@docker push $(DOCKER_IMAGE) --all-tags
