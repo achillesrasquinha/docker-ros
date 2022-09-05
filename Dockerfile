@@ -2,8 +2,8 @@ FROM ghcr.io/achillesrasquinha/ros:base
 
 ENV NOVNC_PORT=5000 \
     ROS_WORKSPACE=/home/ros/ros_ws \
-    DISPLAY_WIDTH=1920 \
-    DISPLAY_HEIGHT=1080 \
+    DISPLAY_WIDTH=1024 \
+    DISPLAY_HEIGHT=768 \
     USER=ros
 
 COPY ./app /app
