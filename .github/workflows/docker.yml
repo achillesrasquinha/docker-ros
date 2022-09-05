@@ -7,7 +7,7 @@ env:
   VERBOSE: true
   TERM: xterm
   
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  GH_TOKEN: ${{ secrets.GH_TOKEN }}
   DOCKER_REGISTRY: ghcr.io
   DOCKER_USERNAME: ${{ github.actor }}
   PROJECT: ${{ github.event.repository.name }}
