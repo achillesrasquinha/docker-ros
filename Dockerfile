@@ -15,8 +15,6 @@ USER ${USER}
 
 RUN mkdir -p ${ROS_WORKSPACE}/src
 
-WORKDIR ${ROS_WORKSPACE}
-
 RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> ${HOME}/.bashrc
 
 VOLUME [ "${ROS_WORKSPACE}" ]
@@ -24,3 +22,5 @@ VOLUME [ "${ROS_WORKSPACE}" ]
 EXPOSE ${NOVNC_PORT}
 
 CMD [ "/start" ]
+
+WORKDIR ${ROS_WORKSPACE}
