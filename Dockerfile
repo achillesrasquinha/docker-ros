@@ -8,11 +8,12 @@ ENV NOVNC_PORT=5000 \
 
 COPY ./app /app
 
+COPY ./start /start
+RUN chmod +x /start
+
 USER ${USER}
 
-COPY ./start /start
-RUN chmod +x /start \
-    && mkdir -p ${ROS_WORKSPACE}/src
+RUN mkdir -p ${ROS_WORKSPACE}/src
 
 WORKDIR ${ROS_WORKSPACE}
 
