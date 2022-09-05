@@ -10,16 +10,18 @@ ENV NOVNC_DIR=/noVNC \
     LANG=C.UTF-8 \
     LANGUAGE=C.UTF-8 \
     LC_ALL=C.UTF-8 \
-    ROS_DISTRO=noetic
+    ROS_DISTRO=foxy
 
 RUN set -e \
     && groupadd -g ${GROUP_ID} ${GROUP} \
     && useradd -rm -d ${HOME} -s /bin/bash -g ${GROUP} -G sudo -u ${USER_ID} ${USER} \
     && apt-get update && \
     apt-get install -y --no-install-recommends \
+        curl \
         gnupg2 \
         lsb-release \
-    && sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list' \
+    && curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key  -o /usr/share/keyrings/ros-archive-keyring.gpg \
+    && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(source /etc/os-release && echo $UBUNTU_CODENAME) main" | tee /etc/apt/sources.list.d/ros2.list > /dev/null \
     && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654 \
     && apt-get update \
     && apt-get install --no-install-recommends -y \
@@ -32,7 +34,7 @@ RUN set -e \
         xvfb \
         xterm \
         x11vnc \
-        ros-${ROS_DISTRO}-desktop-full \
+        ros-${ROS_DISTRO}-desktop \
         python3 \
         python3-numpy \
         supervisor \
