@@ -24,7 +24,7 @@ jobs:
           echo "Checking out $GITHUB_REF..."
       - name: Login to Registry
         run: |
-          echo $GITHUB_TOKEN | docker login $DOCKER_REGISTRY -u $DOCKER_USERNAME --password-stdin
+          echo $GH_TOKEN | docker login $DOCKER_REGISTRY -u $DOCKER_USERNAME --password-stdin
       - name: Pull latest image
         run: |
           make docker-pull
