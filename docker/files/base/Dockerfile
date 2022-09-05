@@ -17,6 +17,7 @@ RUN set -e \
     && useradd -rm -d ${HOME} -s /bin/bash -g ${GROUP} -G sudo -u ${USER_ID} ${USER} \
     && apt-get update && \
     apt-get install -y --no-install-recommends \
+        ca-certificates \
         curl \
         gnupg2 \
         lsb-release \
