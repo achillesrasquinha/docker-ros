@@ -17,6 +17,7 @@ RUN set -e \
     && useradd -rm -d ${HOME} -s /bin/bash -g ${GROUP} -G sudo -u ${USER_ID} ${USER} \
     && apt-get update && \
     apt-get install -y --no-install-recommends \
+        bash \
         ca-certificates \
         curl \
         gnupg2 \
@@ -26,7 +27,6 @@ RUN set -e \
     && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654 \
     && apt-get update \
     && apt-get install --no-install-recommends -y \
-        bash \
         git \
         gcc \
         g++ \
@@ -40,6 +40,7 @@ RUN set -e \
         python3-numpy \
         supervisor \
         dbus-x11 \
+        ros-${ROS_DISTRO}-turtlesim \
     && git clone https://github.com/novnc/noVNC.git --depth 1 ${NOVNC_DIR} \
     && ln -s ${NOVNC_DIR}/vnc_lite.html ${NOVNC_DIR}/index.html \
     && git clone https://github.com/novnc/websockify.git --depth 1 ${NOVNC_DIR}/websockify \
