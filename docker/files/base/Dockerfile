@@ -41,4 +41,6 @@ RUN set -e \
     && git clone https://github.com/novnc/websockify.git --depth 1 ${NOVNC_DIR}/websockify \
     && cd ${NOVNC_DIR}/websockify \
     && python3 setup.py install \
-    && echo "$USER ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+    && echo "$USER ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers \
+    && rm -rf ${NOVNC_DIR}/websockify \
+    && rm -rf /var/lib/apt/lists/*
