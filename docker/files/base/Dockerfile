@@ -47,6 +47,7 @@ RUN set -e \
     && python3 setup.py install \
     && pip3 install --upgrade pip setuptools wheel \
     && pip3 install bpyutils \
+    && pip3 install git+https://github.com/achillesrasquinha/deeply.git \
     && echo "$USER ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers \
     && rm -rf ${NOVNC_DIR}/websockify \
     && rm -rf /var/lib/apt/lists/*
