@@ -10,7 +10,8 @@ ENV NOVNC_DIR=/noVNC \
     LANG=C.UTF-8 \
     LANGUAGE=C.UTF-8 \
     LC_ALL=C.UTF-8 \
-    ROS_DISTRO=noetic
+    ROS_DISTRO=noetic \
+    ROS_DISABLE_LANG="genlisp;gennodejs;geneus"
 
 RUN set -e \
     && groupadd -g ${GROUP_ID} ${GROUP} \
